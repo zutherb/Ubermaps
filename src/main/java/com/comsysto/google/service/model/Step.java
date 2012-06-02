@@ -19,6 +19,8 @@ public class Step {
     @JsonProperty("travel_mode")
     private TravelMode travelMode;
 
+    private Polyline polyline;
+
     public Distance getDistance() {
         return distance;
     }
@@ -65,5 +67,13 @@ public class Step {
 
     public void setTravelMode(TravelMode travelMode) {
         this.travelMode = travelMode;
+    }
+
+    public Polyline getPolyline() {
+        return polyline;
+    }
+
+    public void setPolyline(Polyline polyline) {
+        this.polyline = polyline;
     }
 }

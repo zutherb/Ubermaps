@@ -23,6 +23,8 @@ public class Leg implements Serializable {
     @JsonProperty("start_location")
     private GeoLocation startLocation;
     private List<Step> steps;
+    @JsonProperty("via_waypoint")
+    private List<WayPoint> viaWayPoints;
 
     public Distance getDistance() {
         return distance;

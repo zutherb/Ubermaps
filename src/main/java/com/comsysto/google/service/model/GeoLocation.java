@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class GeoLocation implements Serializable {
     @JsonProperty("lat")
     private double latitude;
-    @JsonProperty("lat")
+    @JsonProperty("lng")
     private double longitude;
 
     public double getLatitude() {

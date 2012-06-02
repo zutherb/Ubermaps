@@ -1,5 +1,6 @@
 package com.comsysto.google.service.model;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
@@ -14,6 +15,12 @@ public class Route implements Serializable {
     private String copyrights;
     private List<Leg> legs;
     private Bounds bounds;
+    @JsonProperty("overview_polyline")
+    private Polyline overviewPolyline;
+    private List<Warning> warnings;
+    @JsonProperty("waypoint_order")
+    private List<WayPoint> wayPointOrder;
+
 
     public String getSummary() {
         return summary;
@@ -45,5 +52,29 @@ public class Route implements Serializable {
 
     public void setBounds(Bounds bounds) {
         this.bounds = bounds;
+    }
+
+    public Polyline getOverviewPolyline() {
+        return overviewPolyline;
+    }
+
+    public void setOverviewPolyline(Polyline overviewPolyline) {
+        this.overviewPolyline = overviewPolyline;
+    }
+
+    public List<Warning> getWarnings() {
+        return warnings;
+    }
+
+    public void setWarnings(List<Warning> warnings) {
+        this.warnings = warnings;
+    }
+
+    public List<WayPoint> getWayPointOrder() {
+        return wayPointOrder;
+    }
+
+    public void setWayPointOrder(List<WayPoint> wayPointOrder) {
+        this.wayPointOrder = wayPointOrder;
     }
 }
