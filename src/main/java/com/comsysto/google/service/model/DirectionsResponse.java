@@ -1,5 +1,6 @@
 package com.comsysto.google.service.model;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.List;
  * @author zutherb
  */
 @JsonSerialize
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class DirectionsResponse implements Serializable {
     private DirectionsResponseStatus status;
     private List<Route> routes;

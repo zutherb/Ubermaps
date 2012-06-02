@@ -1,16 +1,24 @@
 package com.comsysto.google.service.model;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author zutherb
  */
 public class DirectionsRequest extends HashMap<String, String> implements Serializable {
+
+    private static final String SEPARATOR = "|";
+
     private enum RequestParameter{
         ORIGIN("origin"),
         DESTINATION("destination"),
-        SENSOR("sensor");
+        SENSOR("sensor"),
+        WAYPOINTS("waypoints");
         private String name;
 
         RequestParameter(String name) {
@@ -39,10 +47,24 @@ public class DirectionsRequest extends HashMap<String, String> implements Serial
     }
 
     public Boolean getSensor() {
-        return Boolean.getBoolean(get(RequestParameter.SENSOR.getName()));
+        return Boolean.parseBoolean(get(RequestParameter.SENSOR.getName()));
     }
 
     public void setSensor(Boolean sensor) {
         put(RequestParameter.SENSOR.getName(), sensor.toString());
     }
+
+    public List<String> getWaypoints() {
+        String[] split = StringUtils.split(get(RequestParameter.WAYPOINTS.getName()), "|");
+        return Arrays.asList(split);
+    }
+
+    public void setWaypoints(String ... waypoints) {
+        put(RequestParameter.WAYPOINTS.getName(), StringUtils.join(waypoints, SEPARATOR));
+    }
+
+    public void setWaypoints(List<String> waypoints) {
+        put(RequestParameter.WAYPOINTS.getName(), StringUtils.join(waypoints, SEPARATOR));
+    }
+
 }

@@ -43,6 +43,7 @@ dependencies {
     compile     "org.slf4j:slf4j-simple:$slf4jVersion"
     compile     "commons-collections:commons-collections:3.2.1"
     compile     "commons-io:commons-io:2.1"
+    compile     "commons-lang:commons-lang:2.6"
     compile     "org.codehaus.jackson:jackson-mapper-asl:1.9.4"
     compile     "org.springframework:spring-core:$springVersion"
     compile     "org.springframework:spring-beans:$springVersion"

@@ -19,7 +19,7 @@ public class Route implements Serializable {
     private Polyline overviewPolyline;
     private List<Warning> warnings;
     @JsonProperty("waypoint_order")
-    private List<WayPoint> wayPointOrder;
+    private List<Integer> wayPointOrder;
 
 
     public String getSummary() {
@@ -70,11 +70,11 @@ public class Route implements Serializable {
         this.warnings = warnings;
     }
 
-    public List<WayPoint> getWayPointOrder() {
+    public List<Integer> getWayPointOrder() {
         return wayPointOrder;
     }
 
-    public void setWayPointOrder(List<WayPoint> wayPointOrder) {
+    public void setWayPointOrder(List<Integer> wayPointOrder) {
         this.wayPointOrder = wayPointOrder;
     }
 }

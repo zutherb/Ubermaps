@@ -13,7 +13,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class DirectionServiceImpl implements DirectionService {
 
-    private static final String googleUrl = "https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&sensor={sensor}";
+    private static final String googleUrl = "https://maps.googleapis.com/maps/api/directions/json?" +
+            "origin={origin}&destination={destination}&sensor={sensor}&" +
+            "waypoints={waypoints}";
 
     private RestTemplate restTemplate;
 
