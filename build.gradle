@@ -1,0 +1,75 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+springVersion = '3.1.0.RELEASE'
+slf4jVersion = '1.6.4'
+
+group = 'com.comsysto.google'
+version = '0.1-DEV'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+sourceSets {
+	main {
+    	resources {
+        	srcDir 'src/main/resources'
+            srcDir 'src/main/java'
+		}
+    }
+    test {
+    	resources {
+        	srcDir 'src/test/resources'
+            srcDir 'src/test/java'
+        }
+	}
+}
+
+configurations {
+	compile.transitive = true
+    testCompile.transitive = true
+}
+
+repositories {
+    mavenCentral()
+    mavenRepo(url: 'http://maven.springframework.org/release')
+}
+
+dependencies {
+   	compile     "org.slf4j:slf4j-api:$slf4jVersion"
+    compile     "org.slf4j:slf4j-simple:$slf4jVersion"
+    compile     "commons-collections:commons-collections:3.2.1"
+    compile     "commons-io:commons-io:2.1"
+    compile     "org.codehaus.jackson:jackson-mapper-asl:1.9.4"
+    compile     "org.springframework:spring-core:$springVersion"
+    compile     "org.springframework:spring-beans:$springVersion"
+	compile     "org.springframework:spring-context:$springVersion"
+    compile     "org.springframework:spring-context-support:$springVersion"
+    compile     "org.springframework:spring-web:$springVersion"
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile "junit:junit:4.10"
+    testCompile "org.mockito:mockito-all:1.9.0"
+}
+
+task makeDirs(description: 'Initialize project') << { task ->
+    def defaultPackage = 'com/comsysto/google'
+
+    ['java', 'resources'].each {
+    	// convention.sourceSets contains the directory structure
+        // for our project. So we use this struture
+        // and make a directory for each node.
+        sourceSets.all*."${it}".srcDirs*.each{ dir ->
+        	def newDir = new File(dir, defaultPackage)
+            println "Creating directory $newDir"
+            newDir.mkdirs()  // Create dir.
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-9'
+}
+
